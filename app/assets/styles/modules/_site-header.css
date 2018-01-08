@@ -3,6 +3,11 @@
     position: absolute;
     z-index: 2;
     width: 100%;
+    transition: background-color .3s ease-out;
+
+    &--is-expanded {
+        background-color: rgba($mainBlue, .55);
+    }
 
     @mixin atMedium {
         background-color: rgba($mainBlue, 0.3);
@@ -40,6 +45,7 @@
         position: absolute;
         top: 10px;
         right: 10px;
+        z-index: 10;
 
         @mixin atMedium {
             display: none;
@@ -47,17 +53,25 @@
     }
 
     &__menu-content {
-        display: none;
-        padding-top: 100px;
+        opacity: 0;
+        transform: scale(1.2);
+        transition: all .3s ease-out;
+        position: relative;
+        z-index: -10;
+        padding-top: 90px;
         text-align: center;
 
         @mixin atMedium {
-            display: block;
+            opacity: 1;
+            z-index: 1;
             padding-top: 0;
+            transform: scale(1);
         }
 
         &--is-visible {
-            display: block;
+            opacity: 1;
+            z-index: 1;
+            transform: scale(1);
         }
     }
 }
